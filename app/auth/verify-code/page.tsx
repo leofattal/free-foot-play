@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 
-export default function VerifyCodePage() {
+function VerifyCodeForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [code, setCode] = useState('');
@@ -29,7 +29,7 @@ export default function VerifyCodePage() {
       const { error: verifyError } = await supabase.auth.verifyOtp({
         email,
         token: code,
-        type: type as 'email' | 'sms' | 'recovery',
+        type: 'email',
       });
 
       if (verifyError) throw verifyError;
@@ -229,5 +229,20 @@ export default function VerifyCodePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function VerifyCodePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-3"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <VerifyCodeForm />
+    </Suspense>
   );
 }

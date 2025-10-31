@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
 
 interface GoogleMapProps {
   latitude: number;
@@ -31,21 +30,16 @@ export default function GoogleMap({
       return;
     }
 
-    const loader = new Loader({
-      apiKey,
-      version: 'weekly',
-      libraries: ['places'],
-    });
+    const initMap = async () => {
+      try {
+        const { Map } = await google.maps.importLibrary('maps') as google.maps.MapsLibrary;
 
-    loader
-      .load()
-      .then((google) => {
         if (!mapRef.current) return;
 
         const position = { lat: latitude, lng: longitude };
 
         // Create the map
-        const map = new google.maps.Map(mapRef.current, {
+        const map = new Map(mapRef.current, {
           center: position,
           zoom,
           mapTypeControl: true,
@@ -61,7 +55,6 @@ export default function GoogleMap({
           animation: google.maps.Animation.DROP,
         });
 
-        // Add info window
         const infoWindow = new google.maps.InfoWindow({
           content: `
             <div style="padding: 10px;">
@@ -83,12 +76,14 @@ export default function GoogleMap({
         infoWindow.open(map, marker);
 
         setLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error('Error loading Google Maps:', err);
         setError('Failed to load Google Maps. Please refresh the page.');
         setLoading(false);
-      });
+      }
+    };
+
+    initMap();
   }, [latitude, longitude, markerTitle, zoom]);
 
   if (error) {
