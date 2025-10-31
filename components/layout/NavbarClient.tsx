@@ -1,31 +1,47 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';
-import { revalidateAfterAuth } from '@/app/auth/actions';
 
 interface NavbarClientProps {
   user: User | null;
 }
 
-export default function NavbarClient({ user }: NavbarClientProps) {
+export default function NavbarClient({ user: initialUser }: NavbarClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(initialUser);
   const router = useRouter();
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      router.refresh();
+    });
+
+    return () => subscription.unsubscribe();
+  }, [router]);
 
   const handleLogout = async () => {
     setLoading(true);
     const supabase = createClient();
     await supabase.auth.signOut();
-
-    // Revalidate the entire layout to update navbar
-    await revalidateAfterAuth();
-
+    setLoading(false);
+    // Auth state change listener will handle the UI update
     router.push('/');
-    router.refresh();
   };
 
   return (
