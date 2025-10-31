@@ -14,13 +14,12 @@ function MatchFiltersForm({ currentAgeGroup, currentStatus, currentDateFrom }: M
   const searchParams = useSearchParams();
 
   const ageGroups = [
-    'U6 (Under 6)',
-    'U8 (Under 8)',
-    'U10 (Under 10)',
-    'U12 (Under 12)',
-    'U14 (Under 14)',
-    'U16 (Under 16)',
-    'U18 (Under 18)',
+    { value: 'U6', label: 'U6 (Under 6)' },
+    { value: 'U8', label: 'U8 (Under 8)' },
+    { value: 'U10', label: 'U10 (Under 10)' },
+    { value: 'U12', label: 'U12 (Under 12)' },
+    { value: 'U14', label: 'U14 (Under 14)' },
+    { value: 'U16', label: 'U16 (Under 16)' },
   ];
 
   const statuses = [
@@ -62,8 +61,8 @@ function MatchFiltersForm({ currentAgeGroup, currentStatus, currentDateFrom }: M
         >
           <option value="all">All Ages</option>
           {ageGroups.map((age) => (
-            <option key={age} value={age}>
-              {age}
+            <option key={age.value} value={age.value}>
+              {age.label}
             </option>
           ))}
         </select>
