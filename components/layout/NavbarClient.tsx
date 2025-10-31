@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';
+import { revalidateAfterAuth } from '@/app/auth/actions';
 
 interface NavbarClientProps {
   user: User | null;
@@ -19,6 +20,10 @@ export default function NavbarClient({ user }: NavbarClientProps) {
     setLoading(true);
     const supabase = createClient();
     await supabase.auth.signOut();
+
+    // Revalidate the entire layout to update navbar
+    await revalidateAfterAuth();
+
     router.push('/');
     router.refresh();
   };

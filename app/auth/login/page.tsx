@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { revalidateAfterAuth } from '../actions';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -36,6 +37,10 @@ export default function LoginPage() {
 
       if (signInError) throw signInError;
 
+      // Revalidate the entire layout to update navbar
+      await revalidateAfterAuth();
+
+      // Navigate to dashboard
       router.push('/dashboard');
       router.refresh();
     } catch (err: unknown) {

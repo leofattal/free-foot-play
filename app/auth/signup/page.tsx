@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { revalidateAfterAuth } from '../actions';
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -64,8 +65,10 @@ export default function SignUpPage() {
         alert('Please check your email to confirm your account before logging in.');
         router.push('/auth/login');
       } else if (data.session) {
-        // Auto-login successful
+        // Auto-login successful - revalidate to update navbar
+        await revalidateAfterAuth();
         router.push('/dashboard');
+        router.refresh();
       }
     } catch (err: unknown) {
       if (err instanceof Error) {
