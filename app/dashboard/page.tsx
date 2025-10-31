@@ -26,12 +26,12 @@ export default async function DashboardPage() {
     .select('*')
     .eq('parent_id', user.id);
 
-  // Fetch upcoming registrations
+  // Fetch upcoming registrations (future matches only)
   const { data: registrations } = await supabase
     .from('registrations')
     .select(`
       *,
-      matches (
+      matches!inner (
         date,
         start_time,
         age_group,
@@ -44,7 +44,16 @@ export default async function DashboardPage() {
     `)
     .eq('parent_id', user.id)
     .eq('status', 'confirmed')
+    .gte('matches.date', new Date().toISOString().split('T')[0])
     .order('created_at', { ascending: false });
+
+  // Fetch completed matches count (past matches)
+  const { count: completedMatchesCount } = await supabase
+    .from('registrations')
+    .select('id', { count: 'exact', head: true })
+    .eq('parent_id', user.id)
+    .eq('status', 'confirmed')
+    .lt('matches.date', new Date().toISOString().split('T')[0]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -99,7 +108,7 @@ export default async function DashboardPage() {
               </div>
               <div>
                 <p className="text-gray-600 text-sm">Matches Played</p>
-                <p className="text-2xl font-bold text-gray-900">0</p>
+                <p className="text-2xl font-bold text-gray-900">{completedMatchesCount || 0}</p>
               </div>
             </div>
           </div>
