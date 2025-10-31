@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import Hero from '@/components/layout/Hero';
 import UpcomingMatches from '@/components/matches/UpcomingMatches';
+import { createClient } from '@/lib/supabase/server';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <>
       <Hero />
@@ -52,25 +58,46 @@ export default function HomePage() {
       {/* Upcoming Matches Preview */}
       <UpcomingMatches />
 
-      {/* Call to Action */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4 font-[family-name:var(--font-poppins)]">
-            Ready to Get Your Kids Playing?
-          </h2>
-          <p className="text-xl mb-8 text-primary-100">
-            Sign up today and register for your first match in minutes.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/auth/signup" className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-              Create Account
-            </Link>
-            <Link href="/matches" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-              View Schedule
-            </Link>
+      {/* Call to Action - Different for logged in vs logged out users */}
+      {user ? (
+        <section className="py-16 bg-gradient-to-br from-primary-500 to-primary-700 text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4 font-[family-name:var(--font-poppins)]">
+              Welcome Back!
+            </h2>
+            <p className="text-xl mb-8 text-primary-100">
+              Manage your children's profiles and register for upcoming matches.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/dashboard" className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+                Go to Dashboard
+              </Link>
+              <Link href="/matches" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+                Browse Matches
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="py-16 bg-primary text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4 font-[family-name:var(--font-poppins)]">
+              Ready to Get Your Kids Playing?
+            </h2>
+            <p className="text-xl mb-8 text-primary-100">
+              Sign up today and register for your first match in minutes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/auth/signup" className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+                Create Account
+              </Link>
+              <Link href="/matches" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+                View Schedule
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

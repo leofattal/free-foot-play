@@ -4,6 +4,11 @@ import { createClient } from '@/lib/supabase/server';
 export default async function Hero() {
   const supabase = await createClient();
 
+  // Check if user is logged in
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   // Fetch real stats from database
   const [childrenResult, matchesResult] = await Promise.all([
     supabase.from('children').select('id', { count: 'exact', head: true }),
@@ -40,18 +45,37 @@ export default async function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link
-              href="/auth/signup"
-              className="bg-accent hover:bg-accent-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-lg"
-            >
-              Register Now
-            </Link>
-            <Link
-              href="/matches"
-              className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-lg"
-            >
-              View Matches
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href="/dashboard"
+                  className="bg-accent hover:bg-accent-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-lg"
+                >
+                  Go to Dashboard
+                </Link>
+                <Link
+                  href="/matches"
+                  className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-lg"
+                >
+                  Browse Matches
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/auth/signup"
+                  className="bg-accent hover:bg-accent-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-lg"
+                >
+                  Register Now
+                </Link>
+                <Link
+                  href="/matches"
+                  className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-lg"
+                >
+                  View Matches
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Quick Stats - Real Data */}
