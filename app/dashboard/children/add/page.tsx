@@ -52,6 +52,27 @@ export default function AddChildPage() {
         throw new Error('You must be logged in to add a child');
       }
 
+      // Check if profile exists, create if it doesn't
+      const { data: existingProfile } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('id', user.id)
+        .single();
+
+      if (!existingProfile) {
+        // Create profile if it doesn't exist
+        const { error: profileError } = await supabase.from('profiles').insert({
+          id: user.id,
+          full_name: user.user_metadata?.full_name || user.email?.split('@')[0] || 'User',
+          email_verified: !!user.email_confirmed_at,
+        });
+
+        if (profileError) {
+          console.error('Profile creation error:', profileError);
+          throw new Error(`Failed to create profile: ${profileError.message}`);
+        }
+      }
+
       // Insert child
       const { error: insertError } = await supabase.from('children').insert({
         parent_id: user.id,
@@ -73,6 +94,12 @@ export default function AddChildPage() {
       console.error('Add child error:', err);
       if (err instanceof Error) {
         setError(err.message);
+      } else if (typeof err === 'object' && err !== null) {
+        // Handle Supabase error object
+        const supabaseError = err as { message?: string; code?: string; details?: string };
+        const errorMessage = supabaseError.message || supabaseError.details || 'An error occurred while adding the child';
+        console.error('Supabase error details:', supabaseError);
+        setError(errorMessage);
       } else {
         setError('An error occurred while adding the child');
       }
