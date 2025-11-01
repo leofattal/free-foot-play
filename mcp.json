@@ -1,0 +1,22 @@
+{
+    "mcpServers": {
+      "playwright": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@playwright/mcp@latest"]
+      },
+      "supabase": {
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@supabase/mcp-server-supabase@latest",
+          "--project-ref=srrdqmhzzmykeexupwnm"
+        ],
+        "env": {
+          "SUPABASE_ACCESS_TOKEN": "sbp_62c7d5c6978cc0a5fc052af947a5fbc9b31d59fc"
+        }
+      }
+    }
+  }
+      
