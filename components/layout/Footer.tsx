@@ -57,22 +57,22 @@ export default function Footer() {
             <h3 className="font-semibold mb-4 font-[family-name:var(--font-poppins)]">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/rules" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/field-info" className="text-gray-400 hover:text-white transition-colors">
                   Field Rules
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
                   Terms of Service
                 </Link>
               </li>
