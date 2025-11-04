@@ -7,9 +7,11 @@ interface MatchFiltersProps {
   currentAgeGroup?: string;
   currentStatus?: string;
   currentDateFrom?: string;
+  currentDateTo?: string;
+  currentSearch?: string;
 }
 
-function MatchFiltersForm({ currentAgeGroup, currentStatus, currentDateFrom }: MatchFiltersProps) {
+function MatchFiltersForm({ currentAgeGroup, currentStatus, currentDateFrom, currentDateTo, currentSearch }: MatchFiltersProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -44,10 +46,25 @@ function MatchFiltersForm({ currentAgeGroup, currentStatus, currentDateFrom }: M
     router.push('/matches');
   };
 
-  const hasActiveFilters = currentAgeGroup || currentStatus || currentDateFrom;
+  const hasActiveFilters = currentAgeGroup || currentStatus || currentDateFrom || currentDateTo || currentSearch;
 
   return (
     <div className="space-y-6">
+      {/* Search Filter */}
+      <div>
+        <label htmlFor="search" className="block text-sm font-semibold text-gray-700 mb-2">
+          Search
+        </label>
+        <input
+          type="text"
+          id="search"
+          placeholder="Search by location, coach..."
+          value={currentSearch || ''}
+          onChange={(e) => handleFilterChange('search', e.target.value)}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+        />
+      </div>
+
       {/* Age Group Filter */}
       <div>
         <label htmlFor="age_group" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -88,20 +105,32 @@ function MatchFiltersForm({ currentAgeGroup, currentStatus, currentDateFrom }: M
         </select>
       </div>
 
-      {/* Date From Filter */}
+      {/* Date Range Filter */}
       <div>
-        <label htmlFor="date_from" className="block text-sm font-semibold text-gray-700 mb-2">
-          From Date
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          Date Range
         </label>
-        <input
-          type="date"
-          id="date_from"
-          value={currentDateFrom || ''}
-          onChange={(e) => handleFilterChange('date_from', e.target.value)}
-          min={new Date().toISOString().split('T')[0]}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-        />
-        <p className="mt-1 text-xs text-gray-500">Leave empty for today onwards</p>
+        <div className="space-y-2">
+          <input
+            type="date"
+            id="date_from"
+            placeholder="From"
+            value={currentDateFrom || ''}
+            onChange={(e) => handleFilterChange('date_from', e.target.value)}
+            min={new Date().toISOString().split('T')[0]}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+          />
+          <input
+            type="date"
+            id="date_to"
+            placeholder="To"
+            value={currentDateTo || ''}
+            onChange={(e) => handleFilterChange('date_to', e.target.value)}
+            min={currentDateFrom || new Date().toISOString().split('T')[0]}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+          />
+        </div>
+        <p className="mt-1 text-xs text-gray-500">Leave empty for all upcoming matches</p>
       </div>
 
       {/* Clear Filters Button */}

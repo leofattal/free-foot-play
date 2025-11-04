@@ -6,11 +6,28 @@ type SearchParams = Promise<{
   age_group?: string;
   status?: string;
   date_from?: string;
+  date_to?: string;
+  search?: string;
 }>;
 
 export default async function MatchesPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
   const supabase = await createClient();
+
+  // Check if user is admin/coach
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let isAdminOrCoach = false;
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+    isAdminOrCoach = profile?.role === 'admin' || profile?.role === 'coach';
+  }
 
   // Build query based on filters
   let query = supabase
@@ -38,6 +55,15 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
     query = query.gte('date', new Date().toISOString().split('T')[0]);
   }
 
+  if (params.date_to) {
+    query = query.lte('date', params.date_to);
+  }
+
+  if (params.search) {
+    // Search in field_location, coach_name, or description
+    query = query.or(`field_location.ilike.%${params.search}%,coach_name.ilike.%${params.search}%,description.ilike.%${params.search}%`);
+  }
+
   const { data: matches, error } = await query;
 
   if (error) {
@@ -49,12 +75,27 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
       {/* Header Section */}
       <div className="bg-primary text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4 font-[family-name:var(--font-poppins)]">
-            Match Schedule
-          </h1>
-          <p className="text-xl text-primary-100">
-            Browse available matches and register your kids to play
-          </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold mb-4 font-[family-name:var(--font-poppins)]">
+                Match Schedule
+              </h1>
+              <p className="text-xl text-primary-100">
+                Browse available matches and register your kids to play
+              </p>
+            </div>
+            {isAdminOrCoach && (
+              <Link
+                href="/admin/matches/create"
+                className="bg-accent hover:bg-accent-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Create Match
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 
@@ -70,6 +111,8 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
                 currentAgeGroup={params.age_group}
                 currentStatus={params.status}
                 currentDateFrom={params.date_from}
+                currentDateTo={params.date_to}
+                currentSearch={params.search}
               />
             </div>
           </aside>

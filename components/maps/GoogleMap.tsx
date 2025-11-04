@@ -30,8 +30,29 @@ export default function GoogleMap({
       return;
     }
 
+    // Load Google Maps script
+    const loadGoogleMapsScript = () => {
+      return new Promise<void>((resolve, reject) => {
+        if (typeof window !== 'undefined' && window.google?.maps) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=maps,marker&v=weekly`;
+        script.async = true;
+        script.defer = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Failed to load Google Maps script'));
+        document.head.appendChild(script);
+      });
+    };
+
     const initMap = async () => {
       try {
+        // First load the script
+        await loadGoogleMapsScript();
+
         const { Map } = await google.maps.importLibrary('maps') as google.maps.MapsLibrary;
 
         if (!mapRef.current) return;
