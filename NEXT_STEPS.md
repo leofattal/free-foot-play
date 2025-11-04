@@ -1,6 +1,6 @@
-# Next Steps - Free Foot Play
+# Next Steps - KickerGoal
 
-Your Free Foot Play application foundation has been successfully set up! Here's what to do next to get it running.
+Your KickerGoal application foundation has been successfully set up! Here's what to do next to get it running.
 
 ## Immediate Actions Required
 
@@ -303,6 +303,6 @@ Key Files You'll Work With:
 3. ✅ Create a test account
 4. 🚀 Start building the child profile page!
 
-**Good luck building Free Foot Play!**
+**Good luck building KickerGoal!**
 
 If you need guidance on any specific feature, refer to the PRD.md for detailed requirements or the SETUP_GUIDE.md for technical setup help.

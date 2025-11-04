@@ -18,9 +18,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Free Foot Play - Youth Soccer Match Registration',
+  title: 'KickerGoal - Youth Soccer Match Registration',
   description: 'Register your kids for youth soccer matches. Easy scheduling, field information, and match registration for young soccer players.',
-  keywords: ['youth soccer', 'soccer registration', 'kids soccer', 'soccer matches'],
+  keywords: ['youth soccer', 'soccer registration', 'kids soccer', 'soccer matches', 'kicko'],
 };
 
 export default function RootLayout({

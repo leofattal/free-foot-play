@@ -3,7 +3,7 @@ import GoogleMap from '@/components/maps/GoogleMap';
 import CopyAddressButton from '@/components/field/CopyAddressButton';
 
 export const metadata = {
-  title: 'Field Information - Free Foot Play',
+  title: 'Field Information - KickerGoal',
   description: 'Find our soccer field location, directions, parking, and field rules.',
 };
 

@@ -58,7 +58,7 @@ export default function NavbarClient({ user: initialUser }: NavbarClientProps) {
                 </svg>
               </div>
               <span className="text-xl font-bold text-primary font-[family-name:var(--font-poppins)]">
-                Free Foot Play
+                KickerGoal
               </span>
             </Link>
           </div>

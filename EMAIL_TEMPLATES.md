@@ -12,7 +12,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
   <div style="background: linear-gradient(135deg, #2E7D32 0%, #43A047 100%); color: white; padding: 40px 20px; text-align: center;">
     <div style="font-size: 48px; margin-bottom: 10px;">⚽</div>
-    <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Welcome to Free Foot Play!</h1>
+    <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Welcome to KickerGoal!</h1>
     <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Confirm your email to get started</p>
   </div>
 
@@ -20,7 +20,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 20px 0;">Hi there,</p>
 
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 20px 0;">
-      Thanks for signing up with Free Foot Play! We're excited to help you get your kids on the field and playing soccer.
+      Thanks for signing up with KickerGoal! We're excited to help you get your kids on the field and playing soccer.
     </p>
 
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 30px 0;">
@@ -60,7 +60,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
   </div>
 
   <div style="background-color: #f5f5f5; padding: 30px 20px; text-align: center; border-top: 1px solid #e0e0e0;">
-    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ Free Foot Play</p>
+    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ KickerGoal</p>
     <p style="margin: 0 0 15px 0; color: #666; font-size: 13px;">Youth Soccer Match Registration</p>
     <p style="margin: 15px 0 0 0; color: #999; font-size: 11px;">You received this email because you signed up at freefootplay.com</p>
   </div>
@@ -85,7 +85,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 20px 0;">Hi there,</p>
 
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 20px 0;">
-      We received a request to reset the password for your Free Foot Play account.
+      We received a request to reset the password for your KickerGoal account.
     </p>
 
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 30px 0;">
@@ -117,7 +117,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
   </div>
 
   <div style="background-color: #f5f5f5; padding: 30px 20px; text-align: center; border-top: 1px solid #e0e0e0;">
-    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ Free Foot Play</p>
+    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ KickerGoal</p>
     <p style="margin: 0 0 15px 0; color: #666; font-size: 13px;">Youth Soccer Match Registration</p>
     <p style="margin: 15px 0 0 0; color: #999; font-size: 11px;">This is an automated security email from freefootplay.com</p>
   </div>
@@ -142,13 +142,13 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 20px 0;">Hi there,</p>
 
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 30px 0;">
-      Click the button below to log in to your Free Foot Play account. No password needed!
+      Click the button below to log in to your KickerGoal account. No password needed!
     </p>
 
     <div style="text-align: center; margin: 35px 0;">
       <a href="{{ .ConfirmationURL }}"
          style="background-color: #FF9800; color: white; padding: 16px 48px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        Log In to Free Foot Play
+        Log In to KickerGoal
       </a>
     </div>
 
@@ -166,7 +166,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
   </div>
 
   <div style="background-color: #f5f5f5; padding: 30px 20px; text-align: center; border-top: 1px solid #e0e0e0;">
-    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ Free Foot Play</p>
+    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ KickerGoal</p>
     <p style="margin: 0 0 15px 0; color: #666; font-size: 13px;">Youth Soccer Match Registration</p>
     <p style="margin: 15px 0 0 0; color: #999; font-size: 11px;">You requested a magic link at freefootplay.com</p>
   </div>
@@ -191,7 +191,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 20px 0;">Hi there,</p>
 
     <p style="font-size: 16px; color: #333; line-height: 1.6; margin: 0 0 20px 0;">
-      We received a request to change the email address for your Free Foot Play account.
+      We received a request to change the email address for your KickerGoal account.
     </p>
 
     <div style="background-color: #E3F2FD; padding: 15px; border-radius: 6px; margin: 20px 0;">
@@ -226,7 +226,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
   </div>
 
   <div style="background-color: #f5f5f5; padding: 30px 20px; text-align: center; border-top: 1px solid #e0e0e0;">
-    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ Free Foot Play</p>
+    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ KickerGoal</p>
     <p style="margin: 0 0 15px 0; color: #666; font-size: 13px;">Youth Soccer Match Registration</p>
     <p style="margin: 15px 0 0 0; color: #999; font-size: 11px;">This is an automated security email</p>
   </div>
@@ -262,7 +262,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
     <div style="background-color: #E3F2FD; border-left: 4px solid #1976D2; padding: 20px; margin: 30px 0; border-radius: 4px;">
       <p style="margin: 0 0 12px 0; font-weight: 600; color: #1976D2; font-size: 15px;">📋 How to use this code:</p>
       <ol style="margin: 0; padding-left: 20px; color: #333; line-height: 1.8; font-size: 14px;">
-        <li>Go back to the Free Foot Play website</li>
+        <li>Go back to the KickerGoal website</li>
         <li>Enter the code exactly as shown above</li>
         <li>Click "Verify" to continue</li>
       </ol>
@@ -281,7 +281,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
   </div>
 
   <div style="background-color: #f5f5f5; padding: 30px 20px; text-align: center; border-top: 1px solid #e0e0e0;">
-    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ Free Foot Play</p>
+    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 15px;">⚽ KickerGoal</p>
     <p style="margin: 0 0 15px 0; color: #666; font-size: 13px;">Youth Soccer Match Registration</p>
     <p style="margin: 15px 0 0 0; color: #999; font-size: 11px;">This is an automated security email</p>
   </div>
@@ -308,7 +308,7 @@ Copy and paste these templates into your Supabase dashboard under **Authenticati
 - ✅ **Confirm reauthentication** - Verification code display
 
 All templates feature:
-- Free Foot Play branding (green/orange colors)
+- KickerGoal branding (green/orange colors)
 - Soccer ball emoji
 - Mobile-responsive design
 - Security notices

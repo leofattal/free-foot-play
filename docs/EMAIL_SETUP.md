@@ -1,6 +1,6 @@
-# Email Setup Guide - Free Foot Play
+# Email Setup Guide - KickerGoal
 
-This guide covers how to set up and customize email sending in your Free Foot Play application using Supabase.
+This guide covers how to set up and customize email sending in your KickerGoal application using Supabase.
 
 ## Table of Contents
 
@@ -39,13 +39,13 @@ Supabase automatically handles authentication-related emails. These are **FREE**
 **Example: Customize Signup Confirmation**
 
 ```html
-<h2>Welcome to Free Foot Play!</h2>
+<h2>Welcome to KickerGoal!</h2>
 <p>Hi there,</p>
 <p>Thanks for signing up! Click the link below to confirm your email address and start registering your kids for soccer matches.</p>
 <p><a href="{{ .ConfirmationURL }}">Confirm your email</a></p>
 <p>If you didn't create an account, you can safely ignore this email.</p>
 <p>See you on the field!<br>
-The Free Foot Play Team</p>
+The KickerGoal Team</p>
 ```
 
 ### Configure Email Settings
@@ -244,7 +244,7 @@ export function matchReminderEmail(data: MatchReminderData): string {
             </p>
           </div>
           <div class="footer">
-            <p>Free Foot Play - Youth Soccer Registration</p>
+            <p>KickerGoal - Youth Soccer Registration</p>
             <p>You received this email because you have a registered child for this match.</p>
           </div>
         </div>

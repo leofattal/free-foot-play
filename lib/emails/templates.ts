@@ -1,4 +1,4 @@
-// Email Templates for Free Foot Play
+// Email Templates for KickerGoal
 // These templates can be used with Resend, SendGrid, or any email service
 
 interface MatchDetails {
@@ -112,14 +112,14 @@ function emailWrapper(content: string, title: string): string {
         <div class="container">
           ${content}
           <div class="footer">
-            <p><strong>Free Foot Play</strong> - Youth Soccer Registration</p>
+            <p><strong>KickerGoal</strong> - Youth Soccer Registration</p>
             <p>
               <a href="https://freefootplay.com/dashboard">Dashboard</a> •
               <a href="https://freefootplay.com/field-info">Field Info</a> •
               <a href="https://freefootplay.com/contact">Contact Us</a>
             </p>
             <p style="font-size: 12px; color: #999;">
-              You received this email because you registered with Free Foot Play.
+              You received this email because you registered with KickerGoal.
             </p>
           </div>
         </div>
@@ -161,7 +161,7 @@ export function matchReminderEmail(data: MatchDetails): string {
       </p>
 
       <p>See you on the field!</p>
-      <p>The Free Foot Play Team</p>
+      <p>The KickerGoal Team</p>
     </div>
   `;
 
@@ -198,7 +198,7 @@ export function registrationConfirmationEmail(data: MatchDetails): string {
       </p>
 
       <p>Looking forward to seeing ${data.childName} on the field!</p>
-      <p>The Free Foot Play Team</p>
+      <p>The KickerGoal Team</p>
     </div>
   `;
 
@@ -243,7 +243,7 @@ export function matchCancellationEmail(
       </p>
 
       <p>Thank you for your understanding.</p>
-      <p>The Free Foot Play Team</p>
+      <p>The KickerGoal Team</p>
     </div>
   `;
 
@@ -279,7 +279,7 @@ export function waitlistAvailableEmail(
       </p>
 
       <p>See you on the field!</p>
-      <p>The Free Foot Play Team</p>
+      <p>The KickerGoal Team</p>
     </div>
   `;
 
@@ -290,11 +290,11 @@ export function waitlistAvailableEmail(
 export function welcomeEmail(data: { parentName: string; email: string }): string {
   const content = `
     <div class="header">
-      <h1>⚽ Welcome to Free Foot Play!</h1>
+      <h1>⚽ Welcome to KickerGoal!</h1>
     </div>
     <div class="content">
       <p>Hi ${data.parentName},</p>
-      <p>Welcome to Free Foot Play! We're excited to have you join our community of soccer-loving families.</p>
+      <p>Welcome to KickerGoal! We're excited to have you join our community of soccer-loving families.</p>
 
       <p><strong>Here's how to get started:</strong></p>
       <ol>
@@ -319,11 +319,11 @@ export function welcomeEmail(data: { parentName: string; email: string }): strin
       </p>
 
       <p>Let's get your kids playing!</p>
-      <p>The Free Foot Play Team</p>
+      <p>The KickerGoal Team</p>
     </div>
   `;
 
-  return emailWrapper(content, 'Welcome to Free Foot Play!');
+  return emailWrapper(content, 'Welcome to KickerGoal!');
 }
 
 // 6. Registration Cancellation Confirmation
@@ -350,7 +350,7 @@ export function cancellationConfirmationEmail(data: MatchDetails): string {
         <a href="https://freefootplay.com/matches" class="button">Browse Matches</a>
       </p>
 
-      <p>The Free Foot Play Team</p>
+      <p>The KickerGoal Team</p>
     </div>
   `;
 

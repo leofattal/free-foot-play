@@ -17,7 +17,7 @@ export default function Footer() {
                 </svg>
               </div>
               <span className="text-lg font-bold font-[family-name:var(--font-poppins)]">
-                Free Foot Play
+                KickerGoal
               </span>
             </div>
             <p className="text-gray-400 text-sm">
@@ -100,7 +100,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; {currentYear} Free Foot Play. All rights reserved.</p>
+          <p>&copy; {currentYear} KickerGoal. All rights reserved.</p>
         </div>
       </div>
     </footer>

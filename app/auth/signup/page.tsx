@@ -109,7 +109,7 @@ export default function SignUpPage() {
               Create Account
             </h2>
             <p className="mt-2 text-gray-600">
-              Join Free Foot Play and register your kids for soccer matches
+              Join KickerGoal and register your kids for soccer matches
             </p>
           </div>
 

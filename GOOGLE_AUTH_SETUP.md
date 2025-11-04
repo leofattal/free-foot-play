@@ -1,6 +1,6 @@
 # Google OAuth Setup Guide
 
-This guide will walk you through configuring Google OAuth for your Free Foot Play application.
+This guide will walk you through configuring Google OAuth for your KickerGoal application.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ This guide will walk you through configuring Google OAuth for your Free Foot Pla
 1. Go to [Google Cloud Console](https://console.cloud.google.com)
 2. Click the project dropdown at the top and select **New Project**
 3. Enter project details:
-   - **Project name**: Free Foot Play (or your preferred name)
+   - **Project name**: KickerGoal (or your preferred name)
    - **Organization**: (optional)
 4. Click **Create**
 
@@ -27,7 +27,7 @@ This guide will walk you through configuring Google OAuth for your Free Foot Pla
    - **External**: For public use (recommended)
 3. Click **Create**
 4. Fill in the required information:
-   - **App name**: Free Foot Play
+   - **App name**: KickerGoal
    - **User support email**: Your email address
    - **Developer contact information**: Your email address
    - **App logo** (optional): Upload your logo
@@ -46,7 +46,7 @@ This guide will walk you through configuring Google OAuth for your Free Foot Pla
 1. Go to **APIs & Services** > **Credentials**
 2. Click **Create Credentials** > **OAuth client ID**
 3. Choose **Application type**: Web application
-4. Enter a **Name**: Free Foot Play Web Client
+4. Enter a **Name**: KickerGoal Web Client
 5. **Authorized JavaScript origins**:
    - Add: `http://localhost:3000` (for local development)
    - Add: `https://your-domain.com` (for production, when deployed)

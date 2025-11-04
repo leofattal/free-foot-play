@@ -80,7 +80,7 @@ export default function LoginPage() {
               Welcome Back
             </h2>
             <p className="mt-2 text-gray-600">
-              Log in to your Free Foot Play account
+              Log in to your KickerGoal account
             </p>
           </div>
 

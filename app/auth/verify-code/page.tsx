@@ -220,7 +220,7 @@ function VerifyCodeForm() {
                 <div className="ml-3">
                   <p className="text-sm text-yellow-700">
                     <strong>Security Notice:</strong> Never share this code with anyone.
-                    Free Foot Play will never ask for your verification code via phone or email.
+                    KickerGoal will never ask for your verification code via phone or email.
                   </p>
                 </div>
               </div>

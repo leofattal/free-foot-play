@@ -1,4 +1,4 @@
-# Free Foot Play - Youth Soccer Match Registration Platform
+# KickerGoal - Youth Soccer Match Registration Platform
 
 A modern web application for parents to easily register their children for youth soccer matches. Built with Next.js, TypeScript, Tailwind CSS, and Supabase.
 

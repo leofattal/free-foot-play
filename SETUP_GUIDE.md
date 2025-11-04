@@ -1,6 +1,6 @@
-# Setup Guide - Free Foot Play
+# Setup Guide - KickerGoal
 
-This guide will walk you through setting up the Free Foot Play application from scratch.
+This guide will walk you through setting up the KickerGoal application from scratch.
 
 ## Table of Contents
 
@@ -66,7 +66,7 @@ You'll fill in the actual values after setting up Supabase in the next section.
 1. Go to [supabase.com](https://supabase.com) and sign in
 2. Click **"New Project"**
 3. Fill in your project details:
-   - **Name**: Free Foot Play (or your preferred name)
+   - **Name**: KickerGoal (or your preferred name)
    - **Database Password**: Create a strong password (save this!)
    - **Region**: Choose the region closest to your users
    - **Pricing Plan**: Free tier works great for development
